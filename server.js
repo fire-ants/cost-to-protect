@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: true }));
 var views = __dirname + '/views/';
 app.use(express.static(process.cwd() + '/public'));
