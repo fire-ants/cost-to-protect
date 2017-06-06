@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    block title
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/css/narrow.css')
+
+    script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js')
+  body
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-93198170-1', 'auto');
+      ga('send', 'pageview');
+
+    div.container
+      div.header.clearfix
+        nav
+          ul.nav.nav-pills.pull-right
+            li(role="presentation", class=ddMenu ? 'active':undefined)
+              if url && url.search
+                a(href="/datadomain#{url.search}") Data Domain
+              else
+                a(href="/datadomain") Data Domain
+            li(role="presentation", class=ddEcsMenu ? 'active':undefined)
+              if url && url.search
+                a(href="/datadomain-ecs#{url.search}") Data Domain & ECS
+              else
+                a(href="/datadomain-ecs") Data Domain & ECS
+            li(role="presentation", class=ddVirtustreamMenu ? 'active':undefined)
+              if url && url.search
+                a(href="/datadomain-virtustream#{url.search}") Data Domain & Virtustream
+              else
+                a(href="/datadomain-virtustream") Data Domain & Virtustream
+        h3.text-muted Cost to Protect
+      block body
+    div.bottom
+    footer.footer
+      div.container
+        p.text-muted Developed by 
+          a(href="https://github.com/asweers") Aaron Sweers
+          span   - 
+          a(href="https://github.com/fire-ants/") Fire Ants

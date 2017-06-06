@@ -1,0 +1,71 @@
+extend wrapper
+block title
+  title="Cost To Protect - Data Domain and Virtustream"
+block body
+  div
+    form(action="/datadomain-virtustream/graph", role="form", method="get")
+      div.row
+        div.col-sm-6
+          h4 Customer Info
+          div.form-group
+            label(for="customer") Customer Name
+            input.form-control(type="text", name="customer", value=query.customer)
+
+          div.form-group
+            label(for="dataSet") Front End Capacity
+            div.input-group
+              input.form-control(type="number", name="dataSet", step="0.01", value=query.dataSet)
+              div.input-group-addon TB
+              
+          div.form-group
+            label(for="growth") Annual Growth
+            div.input-group
+              input.form-control(type="number", name="growth", step="0.01", value=query.growth)
+              div.input-group-addon %
+
+        div.col-sm-6
+          h4 Solution Info
+          div.form-group
+            label(for="duration") Solution Duration
+            select.form-control(name="duration")
+              option(value="1", selected=query.duration==1 ? 'selected':undefined) 1 Year
+              option(value="2", selected=query.duration==2 ? 'selected':undefined) 2 Year
+              option(value="3", selected=query.duration==3 || query.duration==undefined ? 'selected':undefined) 3 Year
+              option(value="4", selected=query.duration==4 ? 'selected':undefined) 4 Year
+              option(value="5", selected=query.duration==5 ? 'selected':undefined) 5 Year
+              
+          div.form-group
+            label(for="ddCost") Data Domain Cost
+            div.input-group
+              div.input-group-addon $
+              input.form-control(type="number", name="ddCost", step="0.01", value=query.ddCost)          
+              
+          div.form-group
+            label(for="cloudTierCost") Cloud Tier Cost
+            div.input-group
+              div.input-group-addon $
+              input.form-control(type="number", name="cloudTierCost", step="0.01", value=query.cloudTierCost)
+
+          div.form-group
+            label(for="virtustreamCost") Virtustream Storage Type
+            select.form-control(name="virtustreamCost")
+              option(value="0.004167", selected=query.virtustreamCost==0.004167 ? 'selected':undefined) Standard Infrequent Access - $0.004 GB/mo
+              option(value="0.008333", selected=query.virtustreamCost==0.008333 ? 'selected':undefined) Premium Infrequent Access - $0.008 GB/mo
+              option(value="0.009831", selected=query.virtustreamCost==0.009831 ? 'selected':undefined) Standard - $0.009 GB/mo
+              option(value="0.019336", selected=query.virtustreamCost==0.019336 ? 'selected':undefined) Premium - $0.019 GB/mo
+
+          div.form-group
+            label(for="dedupRate") Deduplication Rate
+            div.input-group
+              input.form-control(type="number", name="dedupRate", step="0.01", value=query.dedupRate)
+              div.input-group-addon :1
+              
+          div.form-group
+            label(for="archive") Archive to Virtustream
+            div.input-group
+              input.form-control(type="number", name="archive", step="0.01", value=query.archive)
+              div.input-group-addon %
+                  
+      div.row
+        div.col-lg-12
+          input.btn.btn-default(type="submit", value="Submit")

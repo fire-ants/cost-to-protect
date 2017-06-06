@@ -1,0 +1,43 @@
+extend wrapper
+block title
+  title="Cost To Protect - Data Domain"
+block body
+  h1.text-center #{query.customer}
+  div.row
+    div.col-sm-3.col-xs-6
+      strong
+        p.text-center.text-muted Average Cost
+      h3.text-center $#{solution.avgCost} GB/mo
+    div.col-sm-3.col-xs-6
+      strong
+        p.text-center.text-muted Frontend Capacity
+      h3.text-center #{query.dataSet}TB
+    div.col-sm-3.col-xs-6
+      strong
+        p.text-center.text-muted Annual Growth
+      h3.text-center #{query.growth}%
+    div.col-sm-3.col-xs-6
+      strong
+        p.text-center.text-muted Dedup Rate
+      h3.text-center #{query.dedupRate} : 1
+
+  div.row
+    include ./graphs/ddChart
+  
+  div.row
+    table.table.table-hover.table-striped
+      thead
+        tr
+          th Month
+          th Frontend Capacity
+          th Protected Capacity
+          th Data Domain
+      tbody
+        - for(var i = 0; i < solution.label.length; i++) {
+          tr
+            th #{solution.label[i]}
+            td #{solution.size[i].toLocaleString('en-US', {maximumFractionDigits: 1, minimumFractionDigits: 1})} TB
+            td #{solution.protectedCap[i].toLocaleString('en-US', {maximumFractionDigits: 1, minimumFractionDigits: 1})} TB
+            td $#{solution.ddMoCost[i].toLocaleString('en-US', {minimumFractionDigits: 4})} GB/mo
+        - }
+          
