@@ -2,7 +2,13 @@ extend wrapper
 block title
   title="Cost To Protect - Data Domain"
 block body
-  h1.text-center #{query.customer}
+  div.row
+    div.col-sm-8.col-sm-offset-2
+      h1.text-center #{query.customer}
+    div.col-sm-2
+      span.pull-right
+        button.btn.btn-default(type="button" onclick="location.href='../datadomain/graph/png"+url.search+"';")
+          span.glyphicon.glyphicon-cloud-download
   div.row
     div.col-sm-3.col-xs-6
       strong

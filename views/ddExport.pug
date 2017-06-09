@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/css/narrow.css')
+
+    script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js')
+  body
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-93198170-1', 'auto');
+      ga('send', 'pageview');
+
+    div.container
+      h1.text-center #{query.customer}
+      div.row
+        div.col-sm-3.col-xs-6
+          strong
+            p.text-center.text-muted Average Cost
+          h3.text-center $#{solution.avgCost} GB/mo
+        div.col-sm-3.col-xs-6
+          strong
+            p.text-center.text-muted Frontend Capacity
+          h3.text-center #{query.dataSet}TB
+        div.col-sm-3.col-xs-6
+          strong
+            p.text-center.text-muted Annual Growth
+          h3.text-center #{query.growth}%
+        div.col-sm-3.col-xs-6
+          strong
+            p.text-center.text-muted Dedup Rate
+          h3.text-center #{query.dedupRate} : 1
+
+      div.row
+        include ./graphs/ddChart

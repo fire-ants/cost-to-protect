@@ -21,17 +21,17 @@ html
           ul.nav.nav-pills.pull-right
             li(role="presentation", class=ddMenu ? 'active':undefined)
               if url && url.search
-                a(href="/datadomain#{url.search}") Data Domain
+                a(href="/datadomain" + url.search) Data Domain
               else
                 a(href="/datadomain") Data Domain
             li(role="presentation", class=ddEcsMenu ? 'active':undefined)
               if url && url.search
-                a(href="/datadomain-ecs#{url.search}") Data Domain & ECS
+                a(href="/datadomain-ecs" + url.search) Data Domain & ECS
               else
                 a(href="/datadomain-ecs") Data Domain & ECS
             li(role="presentation", class=ddVirtustreamMenu ? 'active':undefined)
               if url && url.search
-                a(href="/datadomain-virtustream#{url.search}") Data Domain & Virtustream
+                a(href="/datadomain-virtustream" + url.search) Data Domain & Virtustream
               else
                 a(href="/datadomain-virtustream") Data Domain & Virtustream
         h3.text-muted Cost to Protect
