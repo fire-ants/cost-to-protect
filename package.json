@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
-    "pug": "^2.0.0-rc.2"
+    "pug": "^2.0.0-rc.2",
+    "webshot": "^0.18.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
@@ -19,7 +20,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "6.9.x",
+    "node": "6.10.x",
     "npm": "2.15.x"
   }
 }
