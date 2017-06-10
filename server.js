@@ -32,9 +32,9 @@ app.get('/datadomain/graph/png', (req, res) => {
   const html = pug.renderFile('./views/ddExport.pug', {query: req.query, solution: getDataDomainSolution(req.query)});
 
   const path = `./graph${new Date().getTime()}.png`;
-  webshot(html, path, {siteType:'html', quality:150}, (err) => {
+  webshot(html, path, {siteType:'html', renderDelay:1000}, (err) => {
     console.log(`File created: ${path}`);
-    res.download(path, 'ddgraph.png', (err) => {
+    res.download(path, 'ddGraph.png', (err) => {
       console.log(`File deleted: ${path}`)
       fs.unlinkSync(path);
     });
@@ -50,14 +50,39 @@ app.get('/datadomain-ecs/graph', (req, res) => {
   res.render('ddEcsOutput', {ddEcsMenu: true, query: req.query, url: req._parsedOriginalUrl, solution: getDataDomainEcsSolution(req.query)})
 })
 
+app.get('/datadomain-ecs/graph/png', (req, res) => {
+  const html = pug.renderFile('./views/ddEcsExport.pug', {query: req.query, solution: getDataDomainEcsSolution(req.query)});
+
+  const path = `./graph${new Date().getTime()}.png`;
+  webshot(html, path, {siteType:'html', renderDelay:1000}, (err) => {
+    console.log(`File created: ${path}`);
+    res.download(path, 'ddEcsGraph.png', (err) => {
+      console.log(`File deleted: ${path}`)
+      fs.unlinkSync(path);
+    });
+  });
+})
+
 
 app.get('/datadomain-virtustream', (req, res) => {
   res.render('ddVirtustreamInput', {ddVirtustreamMenu: true, query: req.query, url: req._parsedOriginalUrl})
 })
 
 app.get('/datadomain-virtustream/graph', (req, res) => {
-
   res.render('ddVirtustreamOutput', {ddVirtustreamMenu: true, query: req.query, url: req._parsedOriginalUrl, solution: getDataDomainVirtustreamSolution(req.query)})
+})
+
+app.get('/datadomain-virtustream/graph/png', (req, res) => {
+  const html = pug.renderFile('./views/ddVirtustreamExport.pug', {query: req.query, solution: getDataDomainVirtustreamSolution(req.query)});
+
+  const path = `./graph${new Date().getTime()}.png`;
+  webshot(html, path, {siteType:'html', renderDelay:1000}, (err) => {
+    console.log(`File created: ${path}`);
+    res.download(path, 'ddVirtustreamGraph.png', (err) => {
+      console.log(`File deleted: ${path}`)
+      fs.unlinkSync(path);
+    });
+  });
 })
 
 
