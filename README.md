@@ -24,4 +24,4 @@ Login to cloud foundry:
 
 Push application:
 
-    $ cf push cost-to-protect -c "node server.js"
+    $ cf push cost-to-protect
