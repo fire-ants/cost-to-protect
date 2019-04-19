@@ -80,11 +80,13 @@ const getDataDomainEcsSolution = function(query) {
     const totalGb = solution.size[i] * 1024;
     const ddGb = solution.ddSize[i] * 1024;
     const ecsGb = solution.ecsSize[i] * 1024;
+    const ddPrecent = ddGb / (ddGb + ecsGb);
+    const ecsPrecent = ecsGb / (ddGb + ecsGb);
 
     solution.protectedCap.push(query.dedupRate * solution.size[i]);
     solution.ddMoCost.push(query.ddCost / months / query.dedupRate / ddGb);
     solution.ecsMoCost.push(query.ecsCost / months / query.dedupRate / ecsGb);
-    solution.totalCost.push(solution.ddMoCost[i] + solution.ecsMoCost[i]);
+    solution.totalCost.push(solution.ddMoCost[i] * ddPrecent + solution.ecsMoCost[i] * ecsPrecent);
 
     solution.label.push(i+1);
   }
